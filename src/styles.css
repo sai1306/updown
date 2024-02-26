@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond&family=Croissant+One&family=Josefin+Sans:wght@200;300&family=M+PLUS+Rounded+1c:wght@300&family=Questrial&family=Work+Sans:wght@389&display=swap');
+*{
+    font-family: "Questrial", sans-serif;
+}
+:root {
+    --main-color: #784cfa;
+    --light-color: #9e7dff;
+  }
+.title{
+    font-size: large;
+    font-weight: 550;
+  }
+.topnav{
+    background-color: black;
+    color: white;
+}
+.sidenav{
+    gap: 10px;
+    display: flex;
+}
+.font-theme{
+  opacity: 0.7;
+
+}
+.button{
+  background-color: var(--main-color);
+  color: white;
+  transition: 0.39s;
+}
+.shd{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+table{
+  background-color: var(--light-color);
+}
+.search{
+  display: flex;
+}
+.icons{
+  background-color:var(--light-color);
+  border-radius: 10px;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-top: -1px;
+  height: 43px;
+}
+.grid{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto;
+  gap: 10px;
+}
+.roww{
+  display: flex;
+  gap: 10%;
+}
+ .buttons{
+  height: 35px;
+  padding: 5px 10px;
+  width: 350px;
+}
+.feedback{
+  background-color:azure;
+  padding: 20px;
+}
+.usericon{
+  background-color: #784cfa;
+  padding: 15px;
+  text-align: center;
+  width: 50px;
+  border-radius: 50%;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.hover:hover{
+  cursor: pointer;
+
+}
+.login-form{
+  position:absolute;
+  transform: translate(0,50%);
+  padding:10px;
+}
+.snackbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg);
+  }
+}
+.custom-sidebar{
+  position:fixed;
+  right:0;
+  top:0;
+  border:solid 2px black;
+}
+div:has(i):hover{
+cursor: pointer;
+}
+.date{
+  font-size: smaller;
+}
+.option-buttons{
+  display: flex;
+  justify-content: space-around;
+}
