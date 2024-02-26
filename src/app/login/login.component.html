@@ -1,0 +1,30 @@
+<!-- login-form.component.html -->
+
+<div>
+    <div class="container login-form">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header ">Use admin credentials to login</div>
+              <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                  <div class="form-group p-3">
+                    <label for="Email">Email</label>
+                    <input type="email"  class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Enter mail-id" required>
+                  </div>
+                  <div class="form-group p-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Enter password" required>
+                  </div >
+                  <div class="p-3">
+
+                      <button type="submit" class="btn btn-primary ">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

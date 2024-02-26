@@ -1,0 +1,23 @@
+<div style="padding: 10px;" class="container">
+    <h2  class="title">
+        Proceed with User Details
+    </h2>
+    <div style="float: right;" (click)="cancel()">
+    <i class="fa-solid fa-xmark fa-lg"></i>
+  </div>
+    <form [formGroup]="aFormGroup" (ngSubmit)="onSubmit()">
+        <label for="" class="col-sm-2 col-form-label">
+            Username
+        </label>
+        <input #captchatemp required type="text" class="form-control">
+        <br>
+        <ngx-recaptcha2 #captchaElem
+          [siteKey]="'6LdV0XQpAAAAAGtfuONVeDawYjaHnEDnJkffdplm'"
+          (success)="flag=true"
+          [useGlobalDomain]="false"
+          formControlName="recaptcha">
+        </ngx-recaptcha2>
+        <br>
+        <input [disabled]="!flag"  type="submit" class="btn button" placeholder="Submit">
+      </form>
+</div>

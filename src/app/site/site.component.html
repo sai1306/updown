@@ -1,0 +1,161 @@
+<div class="container">
+    <div class="row">
+    <div class="col-md-7 shd p-3">
+        <br>
+        <h3 style="font-size: 1.6rem; font-weight: 550;" class="title">Is {{siteName}} down?</h3>
+        <div class="alert alert-success" *ngIf="updown; else elseBlock">
+            <strong>{{desc}}</strong>
+        </div>
+        <ng-template #elseBlock>
+            <div class="alert alert-danger" >
+                <p>{{desc}}</p>
+            </div>
+        </ng-template>
+        <br><br>
+        <ngx-spinner size="large" [type]="typeSelected"  bdColor="rgba(51,51,51,0.8)" color="#fff" ></ngx-spinner>
+        <div 
+         class="container feedback  ">
+            <h2 class="title">What problem are you having with {{siteName}}</h2>
+            <footer>To submit your report, click the button below that most closely represents the problem you are having. It takes only a single click!</footer>
+            <br>
+            <div *ngIf="optionsVisible; else thanksBlock" class="grid d-flex justify-content-around">
+                <div class="roww">
+                <div *ngIf="feedback_options.length>0 else naOptions">
+                    <div *ngFor="let option of feedback_options;" class="option-buttons">
+                    <button style="width: 100%; margin: 10px;"  #first (click)="addReport(option)" class="btn btn-danger">{{option}}</button>
+
+            </div>
+                </div>
+                <ng-template #naOptions>
+                    <div class="d-flex justify-contents-around">
+                        <button #first class="btn btn-danger">NA</button>
+                    </div>
+                </ng-template>
+            </div>
+            </div>
+            <ng-template #thanksBlock>
+            <strong>
+                Thank you for the report!
+            </strong>
+        </ng-template>
+        <hr>
+        <div style="height: 300px;" class="d-flex align-items-center">
+            <canvas id="ctx">
+            </canvas>
+            <span style="text-align:right;text-wrap:wrap;">
+                Most Common Problem - <b>{{maxReports}}</b>.
+            </span>
+        </div>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column;" class="col-md-4">
+        <div *ngIf="updown" class="shd mx-4 " style="margin-bottom:5px;padding: 10px;">
+            <h3 class="title">Website Info</h3>
+            <ul *ngIf="org else naWhois" style="list-style: none;">
+                 <li >Organisation : {{org}}</li>
+                 <li >Domain Name : {{domainname}}</li>
+                 <li >Country : {{countr}}</li>
+                 <li> Name Servers:
+                 <ul *ngFor="let name of nameserver">
+                <li>{{name}}</li>
+                </ul>
+            </li>
+            </ul>
+            <ng-template #naWhois>
+                <ul style="list-style: none;">
+                    <li >Organisation : NA</li>
+                    <li >Domain Name : NA</li>
+                    <li >Country : NA</li>
+                    <li>Name Servers: NA</li>
+               </ul>
+            </ng-template>
+        </div>
+        <br><br>
+        <div class="shd mx-4">
+            <app-disrupts/>
+        </div>
+    </div>
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div >
+            <div style="padding: 10px;" class="col-md-8 shd">
+                <h2 class="title">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                        Recent Visitor Reports About {{siteName}}
+                </h2>
+                <footer>
+                    View the most recent problem reports about {{siteName}} from other visitors, including the location of their report to see if other people in your area are having similar problems!
+                </footer>
+                <canvas  id="graph"></canvas>
+                <br><br>
+                <div *ngFor="let report of reports">
+                    <div style="opacity: 0.7;">
+                        <i class="fa-solid fa-user fa-lg"></i>
+                       <span> &nbsp; &nbsp; A visitor from {{report.country}} reported a problem with {{siteName}} : <b>{{report.feedback}}</b></span>
+                        <span style="float: right;" class="date">{{report.date}}</span>
+                    </div>
+                    <br><br>
+                </div>
+        </div>
+        <br>
+<div *ngIf="disrupts.length>0" class="shd p-4">
+    <h2 class="title">
+        <i class="fa-solid fa-calendar-days"></i>
+        Past Outages for Newgrounds
+    </h2>
+    <footer>
+        View the most recent times Newgrounds was not loading or down, including the outage duration.
+    </footer>
+    <br>
+    <div *ngFor="let disrupt of disrupts">
+        <div style="border-left: 2px solid red; border-right: 2px solid red;" class="jumbotron shd p-4">
+        <i class="fa-solid fa-circle-arrow-up fa-flip-vertical fa-2xl" style="color: #ff0000;"></i>
+        &nbsp; &nbsp; &nbsp; 
+        <span class="title">A problem with {{siteName}} has been detected while monitoring.</span>
+        <span style="float: right;" class="date">{{disrupt.date}}</span>
+    </div>
+    <br>
+</div>
+</div>
+
+</div>
+</div>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-14 shd ">
+            <br>
+            <h2 class="title">
+            <i class="fa-solid fa-comment"></i>
+            Newgrounds Comments
+        </h2>
+            <footer>
+                Is Newgrounds not loading or down for you? Let other Newgrounds users know what problem you are having with the service, app, or website.
+            </footer>
+            <br>
+            <textarea class="form-control" (keydown.enter)="submitComment($event, comment)" #comment name="comment" id="comment" cols="100" rows="7" style="resize: none;" placeholder="Add a comment"></textarea>
+            <br>
+            <button class="btn button" (click)="submitComment($event, comment)">Add Comment</button>
+            <br><br>
+            <div *ngFor="let comment of comments; let i=index;" >
+                <div  style="border-left: 2px solid #784cfa; padding: 20px; height: 100px;" class="shd">
+                    <b>{{comment.user.charAt(0).toUpperCase() + comment.user.substring(1)}}</b>
+                    <span style="float: right;">{{comment.createdAt}}</span>
+                    <p style="padding:10px 0px; opacity: 0.7;">
+                        {{comment.text}}
+                        <button   style="border: none; float: right; background-color: white;"  *ngIf="comment.user==user" (click)="deleteComment(comment._id, i)">
+                            <i  style="cursor: pointer;" class="fa-solid fa-trash fa-lg"></i>
+                        </button>
+                </p> 
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

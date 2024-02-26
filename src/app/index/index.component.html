@@ -1,0 +1,58 @@
+<div style="padding: 30px;" class="container shadow">
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-5">
+    <div class="search">
+      <div class="ng-autocomplete">
+      <ng-autocomplete 
+      #searchword
+      [data]="retrievedWebsites"
+      [searchKeyword]="keyword"
+      placeholder="Enter app/website name"
+      (selected)='selectEvent($event, itemTemplate)'
+      [itemTemplate]="itemTemplate"
+      [focusFirst]="true"
+      (keyup.enter) ='onChangeSearch($event)'
+      >                              
+    </ng-autocomplete>
+    
+    <ng-template  #itemTemplate let-item>
+    <a  [innerHTML]="item.name"></a> 
+    </ng-template>
+  </div>
+  &nbsp; &nbsp;
+  <div (click)="searchRedirect(searchword.query)" class="icons">
+  <i style="margin-top: 15px;"  class="fa-solid fa-magnifying-glass fa-md"></i>
+  </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
+  <br>
+  <div style="padding: 10px;" class="container shadow">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 style="font-size: large;">Check if a website or app is down for everyone or just you.</h2>
+        <p style="font-size: large; text-align:left; line-height: 30px;" class="font-theme">Stay in the loop with our website status checker! Instantly know if your go-to app or website is online or experiencing disruptions. Don't miss a beat – our tool keeps you informed in real-time, ensuring uninterrupted browsing tailored to your needs. Experience hassle-free browsing with confidence.
+        </p>
+      </div>
+      <div class="col-md-5 offset-md-1">
+        <app-disrupts></app-disrupts>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container shadow">
+    <div class="row">
+    <h2 style="font-size: larger; font-weight: 500; ">Websites We monitor</h2>
+    <div *ngFor="let site of orderedWebsites" class="col-md-6">
+          <span style="font-size: large; color: #784cfa;">{{site.char}}</span>
+          <div *ngFor="let ss of site.values">
+            <a (click)="redirect(ss)"><span class="font-theme hover">{{site.char + ss.name.substring(1) }}</span></a>
+          </div>
+          <br>
+    </div>
+  </div>
+  </div>
+  
