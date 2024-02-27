@@ -89,8 +89,9 @@ user:any
               this.disrupts = res.disrupts;
               this.comments = res.comments.reverse();
               this.comments.forEach((comment:any)=>{
-                let username:any="";
-                if(comment.user === localStorage.getItem('verifyName'))
+                let username:String=comment.user+"";
+                username=username.toLowerCase()
+                if(username === localStorage.getItem('verifyName')?.toLocaleLowerCase())
                 {
                   this.ableDelete.push(true);
                 }

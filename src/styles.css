@@ -121,3 +121,39 @@ cursor: pointer;
   display: flex;
   justify-content: space-around;
 }
+@media only screen and (max-width: 1000px) {
+  .buttons{
+    width: 100%;
+  }
+  .roww{
+    flex-direction: column;
+  }
+  .grid{
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .icons{
+    width: 100%;
+  }
+  .feedback{
+    padding: 10px;
+  }
+  .login-form{
+    position: absolute;
+    transform: translate(0, 50%);
+    padding: 10px;
+  }
+  .custom-sidebar{
+    position: fixed;
+    right: 0;
+    top: 0;
+    border: solid 2px black;
+  }
+  .option-buttons{
+    display: flex;
+    justify-content: space-around;
+  }
+  .pi-chart{
+    flex-direction: column;
+  }
+}
