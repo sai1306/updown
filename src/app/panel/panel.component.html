@@ -1,7 +1,6 @@
 <!-- sidebar.component.html -->
-
-<nav class="shd navbar navbar-expand-md navbar-light bg-light fixed-top p-4">
-  <a class="navbar-brand px-2" href="/admin/panel">Admin-Panel</a>
+<nav class="shd navbar navbar-expand-md navbar-light bg-light p-4">
+  <a class="navbar-brand px-2" (click)="navigate(urls)">Admin-Panel</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,27 +8,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto"> <!-- Utilize ml-auto to push items to the right on large screens -->
       <li class="nav-item">
-        <a class="nav-link" href="/admin/panel#addurls">
-          Add bulk Urls <span class="sr-only">(current)</span>
+        <a class="nav-link" #urls (click) = "navigate(urls)">
+          Add bulk Urls
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/panel#reports">
+        <a class="nav-link"  #reports (click)="navigate(reports)">
            Reports
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/panel#comments">
+        <a class="nav-link" #comment (click)="navigate(comment)">
            Comments
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/panel#admin">
+        <a class="nav-link" #admin (click)="navigate(admin)">
           Add admin
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/panel#addoptns">
+        <a class="nav-link" #options (click)="navigate(options)">
           Update options
         </a>
       </li>
@@ -37,7 +36,6 @@
     </ul>
   </div>
 </nav>
-
     <div id="addurls" class="container shd mt-5 py-3">
         <h2 class="title">
             Add Bulk Urls
@@ -47,122 +45,4 @@
         <button (click)="addBulkUrls(bulkurls)" class="btn btn-primary button">Add Urls</button>
     </div>
     <br>
-    <div class="container reports shd" id="reports">
-        <h2 class="title">
-            Get Reports
-        </h2>
-        <input #reporturl type="text" class="form-control" placeholder="Enter url" >
-        <br>
-        <button (click)="getReports(reporturl)" class="btn btn-primary button">Get Reports</button>
-        <br>
-        <br>
-        <div *ngFor="let report of reports; let i = index;">
-          <div style="opacity: 0.7;">
-              <i class="fa-solid fa-user fa-lg"></i>
-             <span> &nbsp; &nbsp; A visitor from {{report.country}} reported a problem with {{reportSite}} : <b>{{report.feedback}}</b></span>
-              <span style="float: right;">{{report.date}}</span>
-              <i  (click)="deleteReport(report._id, i)" style="cursor: pointer; float: right; margin-right: 15px;" class="fa-solid fa-trash fa-xl"></i>
-          </div>
-          <br><br>
-      </div>
-    </div>
-    <br>
-    <div class="container comments py-3 shd" id="comments">
-        <h2 class="title">
-            Get Comments
-        </h2>
-        <input #commentele type="text" class="form-control" placeholder="Enter url" >
-        <br>
-        <button (click)="getComments(commentele)" class="btn btn-primary button">Get Comments</button>
-        <div *ngFor="let comment of comments; let i=index;" >
-          <div  style="border-left: 2px solid #784cfa; padding: 20px; height: 100px;" class="shd">
-             
-              {{comment.user}}
-              <p>  
-              <i  (click)="deleteComment(comment._id, i)" style="cursor: pointer; float: right; margin-right: 15px;" class="fa-solid fa-trash fa-xl"></i>
-              </p>
-              <p style="opacity: 0.7;">
-                  {{comment.text}}
-          </p> 
-              </div>
-              <br>
-          </div>
-      </div>
-    <br>
-    <div class="container sites shd" id="sites">
-      <h2 class="title">
-        Sites
-     </h2>
-     <div class="row">
-      <h2 style="font-size: larger; font-weight: 500; ">Websites We monitor</h2>
-      <div *ngFor="let site of orderedWebsites" class="col-md-6 ">
-            <span style="font-size: large; color: #784cfa;">{{site.char}}</span>
-            <div *ngFor="let ss of site.values" class="site-panel">
-              <button (click)="deleteUrl(ss._id)" style="cursor: pointer; float: right; " >
-              <i class="fa-solid fa-trash fa-md"></i>
-            </button>
-            <a >
-              <span class="font-theme hover">
-                
-                {{site.char + ss.name.substring(1) }}
-                <span class="status" *ngIf="ss.status === 'true'; else offlineStatus">
-                  <i class="fa-solid fa-arrow-up" style="color: #04ff00;"></i>
-                </span>
-                <ng-template #offlineStatus>
-                  <i class="fa-solid fa-arrow-down" style="color: #ff0000;"></i>
-
-                </ng-template>
-                </span></a>
-            </div>
-            <br>
-      </div>
-    </div>
-    </div>
-    <br>
-    <br>
-    <div class="container px-5 shd py-3 adminreg" id="admin">
-        <h2 class="title" style="text-align: left;">Add an Admin</h2>
-<div class="container mt-5">
-    <div class="row justify-content-start">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header form-control">
-            Register
-          </div>
-          <div class="card-body">
-            <form (ngSubmit)="onRegSubmit()">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
-              </div>
-              <br>
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
-              </div>
-              <br>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
-              </div>
-              <br>
-              <button type="submit" class="btn btn-primary">Register</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>  
-    </div>
-    <br>
-    <div id="addoptns" class="container shd py-3">
-      <h2 class="title">
-          Update Options
-      </h2>
-       <input class="form-control" type="text" #url required placeholder="Enter url...">
-        <br>
-       <textarea class="form-control" #updateoptns name="optns" id="optns" cols="60" placeholder="Enter options seperate them by comma(,)" rows="6"></textarea>
-      <br>
-      <button (click)="addOptions(updateoptns, url)" class="btn btn-primary button">Add Urls</button>
-  </div>
-  
+    

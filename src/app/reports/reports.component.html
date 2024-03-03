@@ -1,8 +1,57 @@
-<div class="container reports shd">
+<nav class="shd navbar navbar-expand-md navbar-light bg-light p-4">
+  <a class="navbar-brand px-2" (click)="navigate(urls)">Admin-Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto"> <!-- Utilize ml-auto to push items to the right on large screens -->
+      <li class="nav-item">
+        <a class="nav-link" #urls (click) = "navigate(urls)">
+          Add bulk Urls
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  #report (click)="navigate(reports)">
+           Reports
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" #comment (click)="navigate(comment)">
+           Comments
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" #admin (click)="navigate(admin)">
+          Add admin
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" #options (click)="navigate(options)">
+          Update options
+        </a>
+      </li>
+      <!-- Add more navbar items as needed -->
+    </ul>
+  </div>
+</nav>
+<br>
+<div class="container reports shd p-4" id="reports">
     <h2 class="title">
         Get Reports
     </h2>
-    <input  type="text" class="form-control" placeholder="enter url" >
+    <input #reporturl type="text" class="form-control" placeholder="Enter url" >
     <br>
-    <button class="btn btn-primary button">Get Reports</button>
+    <button (click)="getReports(reporturl)" class="btn btn-primary button">Get Reports</button>
+    <br>
+    <br>
+    <div *ngFor="let report of reports; let i = index;">
+      <div style="opacity: 0.7;">
+          <i class="fa-solid fa-user fa-lg"></i>
+         <span> &nbsp; &nbsp; A visitor from {{report.country}} reported a problem with {{reportSite}} : <b>{{report.feedback}}</b></span>
+          <span style="float: right;">{{report.date}}</span>
+          <i  (click)="deleteReport(report._id, i)" style="cursor: pointer; float: right; margin-right: 15px;" class="fa-solid fa-trash fa-xl"></i>
+      </div>
+      <br><br>
+  </div>
 </div>

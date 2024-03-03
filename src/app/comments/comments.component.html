@@ -1,0 +1,59 @@
+<nav class="shd navbar navbar-expand-md navbar-light bg-light p-4">
+    <a class="navbar-brand px-2" (click)="navigate(urls)">Admin-Panel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto"> 
+        <li class="nav-item">
+          <a class="nav-link" #urls (click) = "navigate(urls)">
+            Add bulk Urls
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  #reports (click)="navigate(reports)">
+             Reports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #comment (click)="navigate(comment)">
+             Comments
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #admin (click)="navigate(admin)">
+            Add admin
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #options (click)="navigate(options)">
+            Update options
+          </a>
+        </li>
+        <!-- Add more navbar items as needed -->
+      </ul>
+    </div>
+  </nav>
+  <br>
+  <div class="container comments p-3 shd" id="comments">
+    <h2 class="title">
+        Get Comments
+    </h2>
+    <input #commentele type="text" class="form-control" placeholder="Enter url" >
+    <br>
+    <button (click)="getComments(commentele)" class="btn btn-primary button">Get Comments</button>
+    <div *ngFor="let comment of comments; let i=index;" >
+      <div  style="border-left: 2px solid #784cfa; padding: 20px; height: 100px;" class="shd">
+         
+          {{comment.user}}
+          <p>  
+          <i  (click)="deleteComment(comment._id, i)" style="cursor: pointer; float: right; margin-right: 15px;" class="fa-solid fa-trash fa-xl"></i>
+          </p>
+          <p style="opacity: 0.7;">
+              {{comment.text}}
+      </p> 
+          </div>
+          <br>
+      </div>
+  </div>

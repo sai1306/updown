@@ -7,13 +7,14 @@ import { WebsitesService } from '../websites.service';
 import { Sortedsites } from '../sortedsites';
 import { Sites } from '../sites';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-
+import { PanelService } from '../panel.service';
 @Component({
   selector: 'app-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.css']
 })
 export class PanelComponent  implements OnInit {
+
 
 comments: any;
 site:any;
@@ -28,7 +29,7 @@ orderedWebsites: Sortedsites[]=[];
 name: any;
 email: any;
 password: any;
-constructor(private snackbar:MatSnackBar, private websiteService:WebsitesService,private commentService:CommentsService,private loginService:LoginService, private reportService:ReportsService, private router:Router){
+constructor(private snackbar:MatSnackBar, private panelService:PanelService, private websiteService:WebsitesService,private commentService:CommentsService,private loginService:LoginService, private reportService:ReportsService, private router:Router){
 
   if(!sessionStorage.getItem('auth'))
   {
@@ -84,12 +85,14 @@ addBulkUrls(text: any) {
  this.snackbar.open("Adding wait...", 'X',config);
   let arr:string[]=[];
   arr = text.value.split(',');
+  console.log(arr);
+  
   this.websiteService.addBulkUrls(arr).subscribe((res:any)=>{
     const config = new MatSnackBarConfig();
       config.verticalPosition='bottom'
       config.duration = 2500;
       config.horizontalPosition= 'end'
-   this.snackbar.open(res.message +", refresh to see changes in dahsboard", 'X',config);
+   this.snackbar.open(res.message +", refresh to see changes in dashboard", 'X',config);
   },
   );
   }
@@ -164,5 +167,10 @@ addOptions(text:any, url:any){
   }
   );
   
+}
+navigate(ele:HTMLAnchorElement) {
+  console.log(ele.innerText);
+  let val = ele.innerText;
+  this.panelService.navigate(val);
 }
 }

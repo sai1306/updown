@@ -16,7 +16,7 @@ onSubmit() {
     sessionStorage.setItem('auth', res.authToken);
     if(sessionStorage.getItem('auth'))
     {
-      this.router.navigate(['admin/panel']);
+      this.router.navigate(['admin/panel/add-urls']);
     }
   })
 }

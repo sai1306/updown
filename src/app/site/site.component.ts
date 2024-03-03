@@ -85,6 +85,7 @@ user:any
         if(check === 'Website already exists')
         {
             this.websiteService.getUrlInfo(this.site).subscribe((res:any)=>{
+              this.spinner.hide();
               this.retrieved= res;
               this.siteName = res.name;
               this.disrupts = res.disrupts;

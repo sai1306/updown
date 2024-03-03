@@ -17,13 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CaptchaJs } from "@solarwinter/captchajs";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
-
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { PanelComponent } from './panel/panel.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CommentsComponent } from './comments/comments.component';
+import { AdminSitesComponent } from './admin-sites/admin-sites.component';
+import { AddAdminComponent } from './add-admin/add-admin.component';
+import { OptionsComponent } from './options/options.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LoginComponent,
     PanelComponent,
     ReportsComponent,
+    CommentsComponent,
+    AdminSitesComponent,
+    AddAdminComponent,
+    OptionsComponent,
   ],
   imports: [
     ToastrModule,
