@@ -95,11 +95,24 @@
      </h2>
      <div class="row">
       <h2 style="font-size: larger; font-weight: 500; ">Websites We monitor</h2>
-      <div *ngFor="let site of orderedWebsites" class="col-md-6">
+      <div *ngFor="let site of orderedWebsites" class="col-md-6 ">
             <span style="font-size: large; color: #784cfa;">{{site.char}}</span>
-            <div *ngFor="let ss of site.values">
-              <i (click)="deleteUrl(ss._id)" style="cursor: pointer; float: right; margin-right: 15px;" class="fa-solid fa-trash fa-md"></i>
-              <a ><span class="font-theme hover">{{site.char + ss.name.substring(1) }}</span></a>
+            <div *ngFor="let ss of site.values" class="site-panel">
+              <button (click)="deleteUrl(ss._id)" style="cursor: pointer; float: right; " >
+              <i class="fa-solid fa-trash fa-md"></i>
+            </button>
+            <a >
+              <span class="font-theme hover">
+                
+                {{site.char + ss.name.substring(1) }}
+                <span class="status" *ngIf="ss.status === 'true'; else offlineStatus">
+                  <i class="fa-solid fa-arrow-up" style="color: #04ff00;"></i>
+                </span>
+                <ng-template #offlineStatus>
+                  <i class="fa-solid fa-arrow-down" style="color: #ff0000;"></i>
+
+                </ng-template>
+                </span></a>
             </div>
             <br>
       </div>

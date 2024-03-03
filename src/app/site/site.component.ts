@@ -60,8 +60,9 @@ user:any
       const config = new MatSnackBarConfig();
       config.verticalPosition='bottom'
       config.horizontalPosition= 'end'
-    
-   this.snackBar.open('Checking please wait...', 'X',config);
+      
+      this.spinner.show();
+      this.snackBar.open('Checking please wait...', 'X',config);
     this.user=localStorage.getItem('verifyName')
     this.route.params.subscribe((params)=>{
       this.site = params['name'];

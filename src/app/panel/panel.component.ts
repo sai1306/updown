@@ -78,6 +78,10 @@ getComments(commentele:any){
   }); 
 }
 addBulkUrls(text: any) {
+  const config = new MatSnackBarConfig();
+  config.verticalPosition='bottom'
+  config.horizontalPosition= 'end'
+ this.snackbar.open("Adding wait...", 'X',config);
   let arr:string[]=[];
   arr = text.value.split(',');
   this.websiteService.addBulkUrls(arr).subscribe((res:any)=>{
@@ -85,7 +89,7 @@ addBulkUrls(text: any) {
       config.verticalPosition='bottom'
       config.duration = 2500;
       config.horizontalPosition= 'end'
-   this.snackbar.open(res.message, 'X',config);
+   this.snackbar.open(res.message +", refresh to see changes in dahsboard", 'X',config);
   },
   );
   }
@@ -128,10 +132,16 @@ addBulkUrls(text: any) {
       
 }
 deleteUrl(id:String) {
+  const config = new MatSnackBarConfig();
+   config.verticalPosition='bottom'
+   config.horizontalPosition= 'end'
+  this.snackbar.open("Deleting wait...", 'X',config);
+  this.orderedWebsites.forEach((website:any)=>{
+    website.values = website.values.filter((val:any)=>{
+      return val._id!==id;
+    });
+  });
    this.websiteService.deleteUrl(id).subscribe((res:any)=>{
-     const config = new MatSnackBarConfig();
-      config.verticalPosition='bottom'
-      config.horizontalPosition= 'end'
    this.snackbar.open(res.message, 'X',config);
    })
 }
