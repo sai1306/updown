@@ -1,0 +1,14 @@
+<div  class="table-responsive p-3" >
+    <h4 style=" border-bottom: 1px solid red;">Disrupts Occurred Now <i style="color: red;" class="fa-solid fa-arrow-down"></i></h4>
+    <br>
+    <table  class="table">
+      <tbody>
+        <tr *ngFor="let dn of disruptsNow">
+          <td><a href="https://{{dn.hostname}}">{{dn.name | titlecase}}</a></td>
+          <td class="date" class="date">{{dn.date}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+   
+  </div>

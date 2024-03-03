@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { PanelComponent } from './panel/panel.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SideDisruptsComponent } from './side-disrupts/side-disrupts.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LoginComponent,
     PanelComponent,
     ReportsComponent,
+    SideDisruptsComponent,
   ],
   imports: [
     ToastrModule,
