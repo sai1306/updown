@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
    <url>
-      <loc>https://www.up-down-up-down.netlify.app/</loc>
+      <loc>https://up-down-up-down.netlify.app/</loc>
       <changefreq>hourly</changefreq>
       <priority>1.0</priority>
    </url>
    <url>
-    <loc>https://www.up-down-up-down.netlify.app/search/</loc>
+    <loc>https://up-down-up-down.netlify.app/search/</loc>
     <changefreq>hourly</changefreq>
     <priority>0.8</priority>
    </url>
