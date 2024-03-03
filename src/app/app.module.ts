@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DisruptsComponent } from './disrupts/disrupts.component';
 import { NavComponent } from './nav/nav.component';
 import { SiteComponent } from './site/site.component';
@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IndexComponent } from './index/index.component';
 import { TitleCasePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogComponent } from './dialog/dialog.component'; // Import TitleCasePipe
+import { DialogComponent } from './dialog/dialog.component'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CaptchaJs } from "@solarwinter/captchajs";
@@ -52,6 +52,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FormsModule
   ],
   providers: [TitleCasePipe],
-  bootstrap: [AppComponent]
-})
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+}
+
+)
+
 export class AppModule { }
