@@ -1,11 +1,3 @@
-<ngx-spinner   [fullScreen] = "true">
-    Loading...
-    <div class="double-bounce">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-    </div>
-
-</ngx-spinner>
 <div class="container">
     <div class="row">
     <div class="col-md-7 shd p-3">
@@ -19,8 +11,14 @@
                 <p>{{desc}}</p>
             </div>
         </ng-template>
-        <br><br>
-        <ngx-spinner size="large" [type]="typeSelected"  bdColor="rgba(51,51,51,0.8)" color="#fff" ></ngx-spinner>
+        <div class="description">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus illum consequatur adipisci minus beatae aspernatur in, quam nobis dicta veniam, harum rerum fugit deleniti vero quibusdam. Maiores accusamus necessitatibus magnam.
+            Dolorem earum iusto illo, adipisci tempora aperiam saepe! Alias, dicta. Temporibus commodi rem dicta, quas vitae nihil non recusandae, esse fugiat consectetur natus? Labore, nam ullam possimus perferendis culpa quam.
+            Fuga atque adipisci, similique harum consequatur, expedita, repellendus sint necessitatibus quos aspernatur eveniet qui velit fugiat illo. Tenetur nihil voluptatum animi similique vero corrupti magni et doloribus, ipsam odio nisi.
+            Delectus debitis consequatur veritatis voluptatem exercitationem accusantium sit reprehenderit mollitia, a ad pariatur, quis illo eum est nisi in quam non quae sunt qui voluptate! Quod vel ab ipsam illo!
+            Dicta corrupti impedit illo obcaecati necessitatibus recusandae corporis at deserunt magni, beatae ullam ut tempora aliquam nobis eius, saepe reiciendis perferendis. Doloremque quas, distinctio voluptate modi corrupti perferendis eius vero.
+        </div>
+        <br/>
         <div 
          class="container feedback  ">
             <h2 class="title">What problem are you having with {{siteName}}</h2>
@@ -56,7 +54,7 @@
         </div>
         </div>
     </div>
-    <div style="display: flex; flex-direction: column;" class="col-md-4">
+    <div style="display: flex; flex-direction: column;" class="col-md-5">
         <div *ngIf="updown" class="shd mx-4 " style="margin-bottom:5px;padding: 10px;">
             <h3 class="title">Website Info</h3>
             <ul *ngIf="org else naWhois" style="list-style: none;">
@@ -80,7 +78,7 @@
         </div>
         <br><br>
         <div class="shd mx-4">
-            <app-disrupts/>
+            <app-side-disrupts/>
         </div>
     </div>
     </div>
@@ -118,7 +116,7 @@
         View the most recent times Newgrounds was not loading or down, including the outage duration.
     </footer>
     <br>
-    <div *ngFor="let disrupt of disrupts">
+    <div *ngFor="let disrupt of disrupts.reverse()">
         <div style="border-left: 2px solid red; border-right: 2px solid red;" class="jumbotron shd p-4">
         <i class="fa-solid fa-circle-arrow-up fa-flip-vertical fa-2xl" style="color: #ff0000;"></i>
         &nbsp; &nbsp; &nbsp; 

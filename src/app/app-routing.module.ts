@@ -12,6 +12,9 @@ const routes: Routes = [
      {
       path:'admin/panel', component:PanelComponent
      },
+     {
+      path:'**', redirectTo:''
+     }
      
 
   ];

@@ -42,7 +42,7 @@ export class IndexComponent {
      this.router.navigate(['search/', $event.url]);
     }
     onChangeSearch($event: any) {
-      if($event.key === 'Enter')
+      if($event.key === 'Enter' && $event.target.value !== '')
       {
         this.router.navigate(['search/', $event.target.value]);
       }
@@ -65,6 +65,13 @@ export class IndexComponent {
     this.router.navigate(['search/', item.url]);
   }
   searchRedirect(item: any) {
+    if(item === ''){
+      this.snackBar.open('Please enter a valid URL', 'X', {
+        duration: 5000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'end'
+      });
+    }else
     this.router.navigate(['search/', item]);
     }
 }
