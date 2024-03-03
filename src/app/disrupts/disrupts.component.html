@@ -1,6 +1,6 @@
-<div  class="table-responsive p-4 m-3" >
+<div  class="table-responsive p-4 d-flex justify-content-around " >
+  <div>
     <h4 style=" border-bottom: 1px solid red;">Disrupts Occurred Now <i style="color: red;" class="fa-solid fa-arrow-down"></i></h4>
-    <br>
     <table  class="table">
       <tbody>
         <tr *ngFor="let dn of disruptsNow">
@@ -9,14 +9,16 @@
         </tr>
       </tbody>
     </table>
-    <br>
-    <h4 style=" border-bottom: 1px solid red;">Recent Disrupts <i style="color: red;" class="fa-solid fa-circle-exclamation fa-lg"></i></h4>
-    <table  class="table">
-      <tbody>
-        <tr *ngFor="let disrupt of disrupts">
-          <td><a href="https://{{disrupt.hostname}}">{{disrupt.name | titlecase}}</a></td>
-          <td class="date">{{disrupt.date}}</td>
-        </tr>
-      </tbody>
-    </table>
+  </div>
+<div>
+  <h4 style=" border-bottom: 1px solid red;">Recent Disrupts <i style="color: red;" class="fa-solid fa-circle-exclamation fa-lg"></i></h4>
+  <table  class="table">
+    <tbody>
+      <tr *ngFor="let disrupt of disrupts">
+        <td><a href="https://{{disrupt.hostname}}">{{disrupt.name | titlecase}}</a></td>
+        <td class="date">{{disrupt.date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   </div>
