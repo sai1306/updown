@@ -77,12 +77,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .hover:hover{
   cursor: pointer;
-
-}
-.login-form{
-  position:absolute;
-  transform: translate(0,50%);
-  padding:10px;
 }
 .snackbar-content {
   display: flex;

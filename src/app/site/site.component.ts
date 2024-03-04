@@ -38,7 +38,7 @@ user:any
   site:string = "";
   updown:boolean = true;
   options:Object = {};
-  desc:String = "Site is working fine";
+  desc:String = "Please wait while we check the status of your site...";
   present:boolean = false;
   retrieved:Object = {};
   whois:any;
@@ -48,7 +48,7 @@ user:any
   dates:any[]=[];
   labels:string[]=[];
   count:Number[]=[];
-  siteName:any;
+  siteName:any="your site";
   maxReps:number=0;
   maxReports:string='NA';
   disrupts:any[]=[];
@@ -78,7 +78,8 @@ user:any
         }
         this.site = 'www.' + this.site;
       }
-      this.websiteService.addWebsite(this.site).subscribe((res)=>{
+      this.websiteService.addWebsite(this.site).subscribe(
+        (res:any)=>{        
         let obj:Object = res;
         let arr = Object.values(obj);
         let check = arr[0];
@@ -115,15 +116,22 @@ user:any
               this.createBargraph();
             });
         }
-        else{
-          window.location.reload();
-        }
-      })
-      this.websiteService.getWebsiteStatus(this.site).subscribe((res)=>{
+      },
+      (error:any)=>{
+        this.snackBar.open('Invalid URL', 'X',config);
+        this.updown=false;
+        this.siteName = this.site
+        this.desc="Please enter a valid URL";
+      });
+      this.websiteService.getWebsiteStatus(this.site).subscribe((res:any)=>{
+        setTimeout(() => {
         this.snackBar.dismiss();
-        this.updown=res===true?true:false;
+        this.spinner.hide();
+        }, 1000);
+        this.updown=res.status;
         if(!this.updown)
         {
+          if(!this.desc.startsWith('Please enter a valid URL'))
           this.desc = 'Yes, we are detecting problems with '+this.site;
         }
         else{

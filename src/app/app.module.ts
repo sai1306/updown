@@ -23,10 +23,14 @@ import { FormsModule } from '@angular/forms';
 import { PanelComponent } from './panel/panel.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+<<<<<<< HEAD
 import { CommentsComponent } from './comments/comments.component';
 import { AdminSitesComponent } from './admin-sites/admin-sites.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { OptionsComponent } from './options/options.component';
+=======
+import { SideDisruptsComponent } from './side-disrupts/side-disrupts.component';
+>>>>>>> aff2a01c99a4c9630addc2daa6936c27e0289f6b
 
 @NgModule({
   declarations: [
@@ -39,10 +43,14 @@ import { OptionsComponent } from './options/options.component';
     LoginComponent,
     PanelComponent,
     ReportsComponent,
+<<<<<<< HEAD
     CommentsComponent,
     AdminSitesComponent,
     AddAdminComponent,
     OptionsComponent,
+=======
+    SideDisruptsComponent,
+>>>>>>> aff2a01c99a4c9630addc2daa6936c27e0289f6b
   ],
   imports: [
     ToastrModule,

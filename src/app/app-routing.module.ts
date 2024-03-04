@@ -22,6 +22,7 @@ const routes: Routes = [
       path:'admin/panel/comments', component:CommentsComponent
      },
      {
+<<<<<<< HEAD
       path:'admin/panel/add-admin', component:AddAdminComponent
      },
      {
@@ -30,6 +31,12 @@ const routes: Routes = [
      {
       path:'admin/panel/options', component:OptionsComponent
      }
+=======
+      path:'**', redirectTo:''
+     }
+     
+
+>>>>>>> aff2a01c99a4c9630addc2daa6936c27e0289f6b
   ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
