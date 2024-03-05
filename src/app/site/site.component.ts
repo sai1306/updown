@@ -52,6 +52,7 @@ user:any
   maxReps:number=0;
   maxReports:string='NA';
   disrupts:any[]=[];
+  description:String = '';
   constructor(private cdr: ChangeDetectorRef,private spinner:NgxSpinnerService, private snackBar: MatSnackBar,private matdialog:MatDialog,private dialog:DialogService, private route:ActivatedRoute, private websiteService:WebsitesService, private commentService:CommentsService, private reportService:ReportsService){
     this.typeSelected = 'ball-fussion';
   }
@@ -62,7 +63,6 @@ user:any
       config.horizontalPosition= 'end'
       
       this.spinner.show();
-      this.snackBar.open('Checking please wait...', 'X',config);
     this.user=localStorage.getItem('verifyName')
     this.route.params.subscribe((params)=>{
       this.site = params['name'];
@@ -91,6 +91,7 @@ user:any
               this.siteName = res.name;
               this.disrupts = res.disrupts;
               this.comments = res.comments.reverse();
+              this.description = res.description;
               this.comments.forEach((comment:any)=>{
                 let username:String=comment.user+"";
                 username=username.toLowerCase()
@@ -118,14 +119,12 @@ user:any
         }
       },
       (error:any)=>{
-        this.snackBar.open('Invalid URL', 'X',config);
         this.updown=false;
         this.siteName = this.site
         this.desc="Please enter a valid URL";
       });
       this.websiteService.getWebsiteStatus(this.site).subscribe((res:any)=>{
         setTimeout(() => {
-        this.snackBar.dismiss();
         this.spinner.hide();
         }, 1000);
         this.updown=res.status;
