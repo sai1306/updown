@@ -18,7 +18,7 @@ constructor(private loginService:LoginService, private router:Router,private sna
 onSubmit() {
   const config = new MatSnackBarConfig();
   config.verticalPosition='bottom'
-config.horizontalPosition= 'end'
+  config.horizontalPosition= 'end'
   this.snackbar.open('Logging in, Please wait...','X',config);
   this.loginService.addUser(this.email, this.password).subscribe((res:any)=>{
     sessionStorage.setItem('auth', res.authToken);
@@ -26,6 +26,7 @@ config.horizontalPosition= 'end'
     {
       this.router.navigate(['admin/panel/add-urls']);
     }
+    this.snackbar.dismiss();
   })
 }
 
