@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" #description (click)="navigate(description)">
+          <a class="nav-link" #descriptio (click)="navigate(descriptio)">
             Description
           </a>
         </li>
@@ -41,24 +41,28 @@
     </div>
   </nav>
   <br>
-  <div class="container comments p-3 shd" id="comments">
-    <h2 class="title">
-        Get Comments
-    </h2>
-    <input #commentele type="text" class="form-control" placeholder="Enter url" >
-    <br>
-    <button (click)="getComments(commentele)" class="btn btn-primary button">Get Comments</button>
-    <div *ngFor="let comment of comments; let i=index;" >
-      <div  style="border-left: 2px solid #784cfa; padding: 20px; height: 100px;" class="shd">
-         
-          {{comment.user}}
-          <p>  
-          <i  (click)="deleteComment(comment._id, i)" style="cursor: pointer; float: right; margin-right: 15px;" class="fa-solid fa-trash fa-xl"></i>
-          </p>
-          <p style="opacity: 0.7;">
-              {{comment.text}}
-      </p> 
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header form-control">
+                Add Description
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="url">Url</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter url:" [(ngModel)]="url" required>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea placeholder="enter description..." class="form-control" name="description" id="description" [(ngModel)]="description" cols="30" rows="10"></textarea>
+                </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Add Description</button>
+                </form>
+              </div>
+            </div>
           </div>
-          <br>
-      </div>
-  </div>
+        </div>

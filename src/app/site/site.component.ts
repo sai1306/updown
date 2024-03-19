@@ -78,6 +78,8 @@ user:any
         }
         this.site = 'www.' + this.site;
       }
+      console.log(this.site);
+
       this.websiteService.addWebsite(this.site).subscribe(
         (res:any)=>{        
         let obj:Object = res;
@@ -85,6 +87,7 @@ user:any
         let check = arr[0];
         if(check === 'Website already exists')
         {
+          
             this.websiteService.getUrlInfo(this.site).subscribe((res:any)=>{
               this.spinner.hide();
               this.retrieved= res;
@@ -127,7 +130,7 @@ user:any
         setTimeout(() => {
         this.spinner.hide();
         }, 1000);
-        this.updown=res.status;
+        this.updown=res;        
         if(!this.updown)
         {
           if(!this.desc.startsWith('Please enter a valid URL'))

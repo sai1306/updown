@@ -30,7 +30,13 @@ password: any;
       const config = new MatSnackBarConfig();
         config.verticalPosition='bottom'
         config.horizontalPosition= 'end'
+        if(res.message)
         this.snackbar.open(res.message, 'X',config);
+        else
+        this.snackbar.open('user added successfully', 'X', config)
+        this.email=''
+        this.password=''
+        this.name=''
     },
     (err:any)=>{
       const config = new MatSnackBarConfig();
@@ -40,7 +46,9 @@ password: any;
         this.snackbar.open(err.error.errors[0].msg, 'X',config);
       else
       this.snackbar.open(err.error.error, 'X',config);
-    
+      setTimeout(()=>{
+        this.snackbar.dismiss();
+      },2000);
     }
     );
   }

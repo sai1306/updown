@@ -9,6 +9,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { OptionsComponent } from './options/options.component';
 import { AdminSitesComponent } from './admin-sites/admin-sites.component';
+import { DescriptionComponent } from './description/description.component';
 
 const routes: Routes = [
     { path: 'search/:name', component: SiteComponent,},
@@ -30,8 +31,10 @@ const routes: Routes = [
      },
      {
       path:'admin/panel/options', component:OptionsComponent
+     },
+     {
+      path:'admin/panel/description', component:DescriptionComponent
      }
-      
      
 
   ];

@@ -126,9 +126,6 @@ cursor: pointer;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
   }
-  .icons{
-    width: 100%;
-  }
   .feedback{
     padding: 10px;
   }

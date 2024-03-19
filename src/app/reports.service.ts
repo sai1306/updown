@@ -14,10 +14,13 @@ export class ReportsService {
   }
   getReport(url:string){
     const params = new HttpParams().set('url', url);
-    return this.http.get(this.apiUrl+'/get-reports', {params:params});
+    const auth_token:any = sessionStorage.getItem('auth');
+    const head = new HttpHeaders({"Content-Type": "application/json", "authtoken":auth_token});
+    return this.http.get(this.apiUrl+'/get-reports', {params:params, headers:head});
   }
   deleteReport(url:String, _id:String){
-    const head = new HttpHeaders({"Content-Type": "application/json"});
+    const auth_token:any = sessionStorage.getItem('auth');
+    const head = new HttpHeaders({"Content-Type": "application/json", "authtoken":auth_token});
     return this.http.post(this.apiUrl+"/remove-report", {url:url, commentId:_id}, {headers:head});
   }
   addOptions(options:any[], url:string){

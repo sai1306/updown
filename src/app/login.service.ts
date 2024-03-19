@@ -13,6 +13,8 @@ export class LoginService {
   }
   createUser(name:string, email:string, password:string){
     const auth_token:any = sessionStorage.getItem('auth');
+    const obj ={name:name,email:email, password:password}
+    console.log(obj);
     const head = new HttpHeaders({"Content-Type": "application/json","authtoken":auth_token});
     return this.http.post(this.apiUrl+'create-user', {name:name,email:email, password:password}, {headers:head});
   }

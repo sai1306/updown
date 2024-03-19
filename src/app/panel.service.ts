@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -5,11 +6,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PanelService {
-
-  constructor(private router:Router) { }
-  navigate(val:String){
-  console.log(val);
-  
+  private apiUrl = 'https://test-check.glitch.me/admin'
+  constructor(private router:Router, private http:HttpClient) { }
+  navigate(val:String){  
   if(val === 'Reports')
   this.router.navigate(['/admin/panel/reports'])
   else if(val === 'Comments'){
@@ -26,5 +25,13 @@ export class PanelService {
   else if(val === 'Add bulk Urls'){
     this.router.navigate(['/admin/panel/add-urls']);
   }
+  else if(val === 'Description'){
+    this.router.navigate(['admin/panel/description'])
+  }
+}
+addDescription(url:string, description:string){
+  const auth_token:string = "" + sessionStorage.getItem('auth');
+  const head = new HttpHeaders({"Content-Type": "application/json", "authtoken":auth_token});
+  return this.http.post(this.apiUrl+'/set-description', {url, description} , {headers:head} )
 }
 }

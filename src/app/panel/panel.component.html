@@ -32,6 +32,11 @@
           Update options
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link"  #description (click)="navigate(description)">
+           Description
+        </a>
+      </li>
       <!-- Add more navbar items as needed -->
     </ul>
   </div>
@@ -43,6 +48,37 @@
         <textarea class="form-control" #bulkurls name="urls" cols="60" placeholder="Enter urls as www.site.com seperated by comma(,)" rows="6"></textarea>
         <br>
         <button (click)="addBulkUrls(bulkurls)" class="btn btn-primary button">Add Urls</button>
+      </div>
+      <div class="container mt-5 py-3">
+        <h2 class="title">
+          Sites
+       </h2>
+        <div class="row shd">
+        <h2 style="font-size: larger; font-weight: 500; ">Websites We monitor</h2>
+        <div *ngFor="let site of orderedWebsites" class="col-md-6 ">
+              <span style="font-size: large; color: #784cfa;">{{site.char}}</span>
+              <div *ngFor="let ss of site.values" class="site-panel">
+                <button (click)="deleteUrl(ss._id)" style="cursor: pointer; float: right; " >
+                <i class="fa-solid fa-trash fa-md"></i>
+              </button>
+              <a >
+                <span class="font-theme hover">
+                  
+                  {{site.char + ss.name.substring(1) }}
+                  <span class="status" *ngIf="ss.status === 'true'; else offlineStatus">
+                    <i class="fa-solid fa-arrow-up" style="color: #04ff00;"></i>
+                  </span>
+                  <ng-template #offlineStatus>
+                    <i class="fa-solid fa-arrow-down" style="color: #ff0000;"></i>
+  
+                  </ng-template>
+                  </span></a>
+              </div>
+              <br>
+              <br>
+        </div>
+      </div>
     </div>
     <br>
+    
     

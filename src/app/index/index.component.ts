@@ -21,21 +21,21 @@ export class IndexComponent {
   orderedWebsites:Sortedsites[] = [];
   retrievedWebsites:Sites[] = [];
   constructor( private snackBar: MatSnackBar,private router:Router,private websiteServices:WebsitesService, private disruptService:DisruptsService){
-    const config = new MatSnackBarConfig();
-    config.verticalPosition='bottom'
-    config.horizontalPosition= 'end'
-  
- snackBar.open('Loading please wait...', 'X',config);
-    this.websiteServices.getAllSites().subscribe((res)=>{
-      this.retrievedWebsites = res;
-      this.sortSites();
-      snackBar.dismiss();
-    });
+   
   }
   ngAfterViewInit(): void {
   }
   ngOnInit(): void {
-
+    const config = new MatSnackBarConfig();
+    config.verticalPosition='bottom'
+    config.horizontalPosition= 'end'
+  
+ this.snackBar.open('Loading please wait...', 'X',config);
+    this.websiteServices.getAllSites().subscribe((res)=>{
+      this.retrievedWebsites = res;
+      this.sortSites();
+      this.snackBar.dismiss();
+    });
   }
 
     selectEvent($event: any, item:any) {

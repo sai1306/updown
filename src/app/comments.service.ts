@@ -16,10 +16,13 @@ export class CommentsService {
   }
   getComments(site:string){
     const params = new HttpParams().append('url',site);
+    const auth_token:any = sessionStorage.getItem('auth');
+    const head = new HttpHeaders({"Content-Type": "application/json", "authtoken":auth_token});
     return this.http.get(this.apiUrl+"/get-comments",{params:params});
   }
   deleteComment(url:String, _id:String){
-    const head = new HttpHeaders({"Content-Type": "application/json"});
+    const auth_token:any = sessionStorage.getItem('auth');
+    const head = new HttpHeaders({"Content-Type": "application/json", "authtoken":auth_token});
     return this.http.post(this.apiUrl+"/delete-comment", {url:url, commentId:_id}, {headers:head});
   }
   upvoteComment(url:String, _id:String){

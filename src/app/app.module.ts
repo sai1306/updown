@@ -28,6 +28,7 @@ import { AdminSitesComponent } from './admin-sites/admin-sites.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { OptionsComponent } from './options/options.component';
 import { SideDisruptsComponent } from './side-disrupts/side-disrupts.component';
+import { DescriptionComponent } from './description/description.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SideDisruptsComponent } from './side-disrupts/side-disrupts.component';
     AddAdminComponent,
     OptionsComponent,
     SideDisruptsComponent,
+    DescriptionComponent,
   ],
   imports: [
     ToastrModule,

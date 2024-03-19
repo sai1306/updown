@@ -1,42 +1,47 @@
 <nav class="shd navbar navbar-expand-md navbar-light bg-light p-4">
-    <a class="navbar-brand px-2" (click)="navigate(urls)">Admin-Panel</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto"> <!-- Utilize ml-auto to push items to the right on large screens -->
-        <li class="nav-item">
-          <a class="nav-link" #urls (click) = "navigate(urls)">
-            Add bulk Urls
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"  #reports (click)="navigate(reports)">
-             Reports
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" #comment (click)="navigate(comment)">
-             Comments
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" #admin (click)="navigate(admin)">
-            Add admin
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" #options (click)="navigate(options)">
-            Update options
-          </a>
-        </li>
-        <!-- Add more navbar items as needed -->
-      </ul>
-    </div>
-  </nav>
+  <a class="navbar-brand px-2" (click)="navigate(urls)">Admin-Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto"> <!-- Utilize ml-auto to push items to the right on large screens -->
+      <li class="nav-item">
+        <a class="nav-link" #urls (click) = "navigate(urls)">
+          Add bulk Urls
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  #reports (click)="navigate(reports)">
+           Reports
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" #comment (click)="navigate(comment)">
+           Comments
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" #admin (click)="navigate(admin)">
+          Add admin
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" #options (click)="navigate(options)">
+          Update options
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  #description (click)="navigate(description)">
+           Description
+        </a>
+      </li>
+      <!-- Add more navbar items as needed -->
+    </ul>
+  </div>
+</nav>
   <div class="container mt-5">
-    <div class="row justify-content-start">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header form-control">
@@ -46,17 +51,17 @@
             <form (ngSubmit)="onRegSubmit()">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name"  required>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
               </div>
               <br>
               <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email"  required>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email"  required>
               </div>
               <br>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password"  required>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"  required>
               </div>
               <br>
               <button type="submit" class="btn btn-primary">Register</button>
