@@ -12,34 +12,40 @@ import { AdminSitesComponent } from './admin-sites/admin-sites.component';
 import { DescriptionComponent } from './description/description.component';
 
 const routes: Routes = [
-    { path: 'search/:name', component: SiteComponent,},
-     {path: '', component: IndexComponent},
-     {path:'admin/login', component:LoginComponent},
-     {
-      path:'admin/panel/add-urls', component:PanelComponent
-     },{
-      path:'admin/panel/reports', component:ReportsComponent
-     },{
-      path:'admin/panel/comments', component:CommentsComponent
-     },
-     {
- 
-      path:'admin/panel/add-admin', component:AddAdminComponent
-     },
-     {
-      path:'admin/panel/sites', component:AdminSitesComponent
-     },
-     {
-      path:'admin/panel/options', component:OptionsComponent
-     },
-     {
-      path:'admin/panel/description', component:DescriptionComponent
-     }
-     
-
-  ];
+  { path: 'search/:name', component: SiteComponent },
+  { path: '', component: IndexComponent },
+  { path: 'admin/login', component: LoginComponent },
+  {
+    path: 'admin/panel/add-urls',
+    component: PanelComponent,
+  },
+  {
+    path: 'admin/panel/reports',
+    component: ReportsComponent,
+  },
+  {
+    path: 'admin/panel/comments',
+    component: CommentsComponent,
+  },
+  {
+    path: 'admin/panel/add-admin',
+    component: AddAdminComponent,
+  },
+  {
+    path: 'admin/panel/sites',
+    component: AdminSitesComponent,
+  },
+  {
+    path: 'admin/panel/options',
+    component: OptionsComponent,
+  },
+  {
+    path: 'admin/panel/description',
+    component: DescriptionComponent,
+  },
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
