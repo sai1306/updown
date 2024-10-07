@@ -6,7 +6,7 @@ import { Axios } from 'axios';
   providedIn: 'root'
 })
 export class CommentsService {
-  private apiUrl:String = 'https://test-check.glitch.me/user';
+  private apiUrl:String = 'https://down-check.glitch.me/';
   constructor(private http:HttpClient) { }
   addComment(url:String, comment:String, user:String){
     const head = new HttpHeaders({"Content-Type": "application/json"});
