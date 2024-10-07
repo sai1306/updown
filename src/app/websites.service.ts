@@ -6,8 +6,8 @@ import { Sortedsites } from './sortedsites';
   providedIn: 'root'
 })
 export class WebsitesService {
-  private apiUrl1:String = 'https://test-check.glitch.me/user';
-  private apiUrl2:String = 'https://test-check.glitch.me/admin';
+  private apiUrl1:String = 'https://down-check.glitch.me/user';
+  private apiUrl2:String = 'https://down-check.glitch.me/admin';
   orderedSites:Sortedsites[]=[];
   constructor(private http:HttpClient) { }  
   getAllSites(){
