@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DisruptsService {
-  private apiUrl:String = 'https://test-check.glitch.me/user';
+  private apiUrl:String = 'https://down-check.glitch.me/user';
 
   constructor(private http:HttpClient) { }
   getRecentDisrupts(){
