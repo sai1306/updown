@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogPosition } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
-import { any } from 'prop-types';
 import { MatDialogRef } from '@angular/material/dialog';
 @Injectable({
   providedIn: 'root'
