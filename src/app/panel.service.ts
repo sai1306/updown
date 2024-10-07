@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PanelService {
-  private apiUrl = 'https://test-check.glitch.me/admin'
+  private apiUrl = 'https://down-check.glitch.me/admin'
   constructor(private router:Router, private http:HttpClient) { }
   navigate(val:String){  
   if(val === 'Reports')
