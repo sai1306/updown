@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ReportsService {
-  private apiUrl:String = 'https://test-check.glitch.me/user';
-  private panelUrl = 'https://test-check.glitch.me/admin';
+  private apiUrl:String = 'https://down-check.glitch.me/user';
+  private panelUrl = 'https://down-check.glitch.me/admin';
   constructor(private http:HttpClient) { }
   addReport(url:string, option:string, country:string){
     const head = new HttpHeaders({"Content-Type": "application/json"})
