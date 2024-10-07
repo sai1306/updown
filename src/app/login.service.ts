@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'https://test-check.glitch.me/admin/'
+  private apiUrl = 'https://down-check.glitch.me/admin/'
   constructor(private http:HttpClient) { }
   addUser(email:string, password:string)
   {
